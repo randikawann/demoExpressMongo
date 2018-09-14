@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schemas = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // create student Schema & model
 

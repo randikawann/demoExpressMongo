@@ -1,17 +1,20 @@
 const express = require('express');
-
 const router = express.Router();
+
+const Student = require('../models/student');
 
 router.get('/ninja',function(req,res){
     res.send({type : 'GET'});
 });
 
 router.post('/ninja',function(req,res){
-    res.send({
-        type : 'POST',
-        name : req.body.name,
-        rank : req.body.rank
+    // var student = new student(req.body);
+    // student.save();
+    // not need those whole code
+    Student.create(req.body).then(function(student){
+        res.send(student);
     });
+    
 });
 
 router.put('/ninja/:id',function(req,res){
