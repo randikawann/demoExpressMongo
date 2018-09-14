@@ -1,8 +1,8 @@
-// install body parser
-// npm install body-parser --save
+// install mongoose 
+// npm install mongoose --save
 
+// creating schemas student.js
 
-    
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -20,9 +20,3 @@ app.listen(process.env.port || 3000, function(){
     console.log('now listning for request on port 3000');
 });
 
-    // post json object through postman
-    
-/* {
-    "name" : "ewfsdc",
-    "rank" : "efsd"
-}*/
