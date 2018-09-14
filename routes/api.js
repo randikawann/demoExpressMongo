@@ -7,7 +7,14 @@ router.get('/ninja',function(req,res){
 });
 
 router.post('/ninja',function(req,res){
-    res.send({type : 'POST'});
+    // console.log(req.body);
+    // res.send({type : 'POST'});
+    // edit this as below
+    res.send({
+        type : 'POST',
+        name : req.body.name,
+        rank : req.body.rank
+    });
 });
 
 router.put('/ninja/:id',function(req,res){
