@@ -7,16 +7,6 @@ router.get('/ninja',function(req,res,next){
     Student.find({}).then(function(student){
         res.send(student);
     });
-
-// get url params to lat and lng
-// geo Near is not function future in mongoose.
-/*    Student.geoNear(
-        {type: 'Point', coordinates: [parseFloat(req.query.lng),parseFloat(req.query.lat)]},
-        {maxDistance: 100000, spherical: true}
-    ).then(function(student){
-        res.send(student);
-    });
-*/
 });
 
 router.post('/ninja',function(req,res,next){
