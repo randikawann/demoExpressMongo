@@ -1,5 +1,3 @@
-// add mongoose module to this to connect
-// edit api.js
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -13,14 +11,7 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/testdb');
 mongoose.Promise = global.Promise;
 
-// //////////////////////////////////////////////////////////////
-// to access react comp
 app.use(express.static('public'));
-// add public folder also html and css file into it
-// complete html and add script file for react
-// create react component in index.html
-// //////////////////////////////////////////////////////////////////
-
 
 app.use(bodyParser.json());
 
