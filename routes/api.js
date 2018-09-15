@@ -3,25 +3,23 @@ const router = express.Router();
 
 const Student = require('../models/student');
 
-router.get('/ninja',function(req,res){
+router.get('/ninja',function(req,res,next){
     res.send({type : 'GET'});
 });
 
-router.post('/ninja',function(req,res){
-    // var student = new student(req.body);
-    // student.save();
-    // not need those whole code
+// edit this with "next" to error handler
+router.post('/ninja',function(req,res,next){
     Student.create(req.body).then(function(student){
         res.send(student);
-    });
+    }).catch(next);
     
 });
 
-router.put('/ninja/:id',function(req,res){
+router.put('/ninja/:id',function(req,res,next){
     res.send({type : 'PUT'});
 });
 
-router.delete('/ninja/:id',function(req,res){
+router.delete('/ninja/:id',function(req,res,next){
     res.send({type : 'DELETE'});
 });
 
