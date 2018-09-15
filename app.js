@@ -1,25 +1,30 @@
-// add mongoose module to this to connect
-// edit api.js
-const express = require('express');
-const bodyParser = require('body-parser');
+var express = require('express');
+var http = require('http');
+var path = require('path');
+var mongoose = require('mongoose');
 
-const mongoose = require('mongoose');
+var app = express();
 
+// All environment
+app.set('port', process.env.PORT || 3000);
+app.set('view', __direname +'/views');
+app.set('view engine','jade');
 
-// set up express app
-const app = express();
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.route);
+app.use(express.static(path.join(__dirname,'public')));
 
-// connect to mongodb
 mongoose.connect('mongodb://localhost/testdb');
-mongoose.Promise = global.Promise;
 
-app.use(bodyParser.json());
-
-// for routing 
-app.use('/api', require('./routes/api'));
-
-// listen for request
-app.listen(process.env.port || 3000, function(){
-    console.log('now listning for request on port 3000');
+var Schema = new mongoose.Schema({
+    __id : String,
+    name : String,
+    age : Number
 });
 
+var user = mongoose.model('emp',Schema);
+
+var server = http.createServer(app).listen(app.get('port'),function(){
+    console.log('Express server listning port '+app.get('port'));
+})
