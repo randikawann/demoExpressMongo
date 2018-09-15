@@ -7,7 +7,6 @@ router.get('/ninja',function(req,res,next){
     res.send({type : 'GET'});
 });
 
-// edit this with "next" to error handler
 router.post('/ninja',function(req,res,next){
     Student.create(req.body).then(function(student){
         res.send(student);
@@ -20,7 +19,11 @@ router.put('/ninja/:id',function(req,res,next){
 });
 
 router.delete('/ninja/:id',function(req,res,next){
-    res.send({type : 'DELETE'});
+    // console.log(req.params.id);
+    // res.send({type : 'DELETE'});
+    Student.findByIdAndRemove({_id: req.params.id}).then(function(student){
+        res.send("removed"+student);
+    });
 });
 
 module.exports = router;
