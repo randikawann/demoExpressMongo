@@ -13,11 +13,21 @@ router.post('/ninja',function(req,res,next){
     }).catch(next);
     
 });
-
+/*
 router.put('/ninja/:id',function(req,res,next){
     // res.send({type : 'PUT'});
     Student.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(student){
         res.send(student);
+    });
+}); */
+// this is defult one use findone.. that is use to find error easily. 
+// otherwise we can't get idea when request address correct or not.
+router.put('/ninja/:id',function(req,res,next){
+    Student.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(student){
+        Student.findOne({_id: req.params.id}).then(function(student){
+            res.send(student);
+        });
+        
     });
 });
 
